@@ -42,8 +42,7 @@ elseif(NOT compiler_in_path STREQUAL VCPKG_DETECTED_CMAKE_C_COMPILER)
 endif()
 
 vcpkg_list(SET MAKEFILE_OPTIONS)
-# A Configure target assembles exactly one architecture, so any build covering
-# several of them at once (arm64 + x86_64, but also arm64 + armv7) must drop ASM.
+# Universal builds don't support ASM
 list(LENGTH VCPKG_OSX_ARCHITECTURES openssl_osx_arch_count)
 if(openssl_osx_arch_count GREATER 1)
     list(APPEND CONFIGURE_OPTIONS no-asm)
